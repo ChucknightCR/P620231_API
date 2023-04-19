@@ -20,8 +20,8 @@ namespace P620231_API.Models
         public int UserRoleId { get; set; }
         public int UserStatusId { get; set; }
 
-        public virtual UserRole UserRole { get; set; } = null!;
-        public virtual UserStatus UserStatus { get; set; } = null!;
+        public virtual UserRole? UserRole { get; set; } = null!;
+        public virtual UserStatus? UserStatus { get; set; } = null!;
         public virtual ICollection<Appointment> Appointments { get; set; }
     }
 }

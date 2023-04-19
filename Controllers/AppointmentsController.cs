@@ -12,7 +12,7 @@ namespace P620231_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [ApiKey]
+    //[ApiKey]
     public class AppointmentsController : ControllerBase
     {
         private readonly P620231_AutoAppoContext _context;
@@ -41,6 +41,22 @@ namespace P620231_API.Controllers
             }
 
             return appointment;
+        }
+
+        // GET: api/Appointments/5
+        [HttpGet("GetAppointmentListByUSer")]
+        public async Task<ActionResult <IEnumerable<Appointment>>> GetAppointmentListByUSer(int pUserID)
+        {
+            var appointmentList = await _context.Appointments.Where(u => u.UserId == pUserID).ToListAsync();
+
+            //List<Appointment>
+
+            if (appointmentList == null)
+            {
+                return NotFound();
+            }
+
+            return appointmentList;
         }
 
         // PUT: api/Appointments/5

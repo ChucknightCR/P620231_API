@@ -1,3 +1,3 @@
-﻿Scaffold-DbContext -f "DESKTOP-RF7U8O0; DATABASE=P620231_AutoAppo; INTEGRATED SECURITY=TRUE;User Id=;Password=" Microsoft.EntityframeworkCore.SqlServer -OutputDir Models
+﻿Scaffold-DbContext -f SERVER="DESKTOP-RF7U8O0;DATABASE=P620231_AutoAppo;INTEGRATED SECURITY=TRUE;User Id=;Password=" Microsoft.EntityframeworkCore.SqlServer -OutputDir Models
 
-Scaffold-DbContext -f "DESKTOP-RF7U8O0; DATABASE=P620231_AutoAppo; INTEGRATED SECURITY=TRUE;User Id=;Password=" Microsoft.EntityframeworkCore.SqlServer -OutputDir Models -Context P620231_AutoAppoContext -Tables "RecoveryCode"
+Scaffold-DbContext -f "DESKTOP-RF7U8O0;DATABASE=P620231_AutoAppo;INTEGRATED SECURITY=TRUE;User Id=;Password=" Microsoft.EntityframeworkCore.SqlServer -OutputDir Models -Context P620231_AutoAppoContext -Tables "RecoveryCode"

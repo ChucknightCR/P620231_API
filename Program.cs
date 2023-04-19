@@ -27,7 +27,7 @@ internal class Program
 
         //Definimos una variable local que almacene el ccn string
         string cnnStr = CnnStrBuilder.ConnectionString;
-
+    
         //definir la ccnstring al proyecto antes de iniciarlo
         builder.Services.AddDbContext<P620231_AutoAppoContext>(options => options.UseSqlServer(cnnStr));
 

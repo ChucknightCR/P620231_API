@@ -18,6 +18,7 @@ namespace P620231_API.Models
 
         public virtual DbSet<Appointment> Appointments { get; set; } = null!;
         public virtual DbSet<AppointmentStatus> AppointmentStatuses { get; set; } = null!;
+        public virtual DbSet<RecoveryCode> RecoveryCodes { get; set; } = null!;
         public virtual DbSet<Schedule> Schedules { get; set; } = null!;
         public virtual DbSet<Service> Services { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
@@ -28,8 +29,8 @@ namespace P620231_API.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("SERVER=DESKTOP-RF7U8O0\\MSSQLSERVER1; DATABASE=P620231_AutoAppo;INTEGRATED SECURITY=TRUE;User Id=;Password=");
+                    //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                                //optionsBuilder.UseSqlServer("SERVER=DESKTOP-RF7U8O0;DATABASE=P620231_AutoAppo;INTEGRATED SECURITY=TRUE;User Id=;Password=");
             }
         }
 
@@ -87,7 +88,7 @@ namespace P620231_API.Models
             modelBuilder.Entity<AppointmentStatus>(entity =>
             {
                 entity.HasKey(e => e.AppoStatusId)
-                    .HasName("PK__Appointm__1B2A53DBE26E39A4");
+                    .HasName("PK__Appointm__1B2A53DB61CB40F8");
 
                 entity.ToTable("Appointment Status");
 
@@ -96,6 +97,26 @@ namespace P620231_API.Models
                 entity.Property(e => e.AppoStatusDescription)
                     .HasMaxLength(255)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<RecoveryCode>(entity =>
+            {
+                entity.ToTable("RecoveryCode");
+
+                entity.Property(e => e.RecoveryCodeId).HasColumnName("RecoveryCodeID");
+
+                entity.Property(e => e.Email)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.GenerateDate)
+                    .HasColumnType("smalldatetime")
+                    .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.RecoveryCode1)
+                    .HasMaxLength(6)
+                    .IsUnicode(false)
+                    .HasColumnName("RecoveryCode");
             });
 
             modelBuilder.Entity<Schedule>(entity =>
